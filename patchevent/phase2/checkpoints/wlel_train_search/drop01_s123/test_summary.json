@@ -1,0 +1,12 @@
+{
+  "best_val_epoch": 11,
+  "best_val_loss": 1.4748740792274475,
+  "test_event_f1": 0.8433322136378905,
+  "test_event_precision": 0.8004718785869149,
+  "test_event_recall": 0.8910420215786485,
+  "test_apex_mae": 0.7258822592209033,
+  "test_onset_mae": 0.7520114713614275,
+  "test_duration_mae": 0.4255556440691468,
+  "test_intensity_mape": 0.08790795827939167,
+  "test_parse_success_rate": 1.0
+}

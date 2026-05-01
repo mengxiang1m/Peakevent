@@ -1,0 +1,17 @@
+{
+  "event_precision": 0.902461257976299,
+  "event_recall": 0.8125854993160054,
+  "event_f1": 0.8551684422689316,
+  "total_tp": 2970,
+  "total_fp": 321,
+  "total_fn": 685,
+  "total_pred_events": 3291,
+  "total_gt_events": 3655,
+  "apex_mae": 0.6282828282828283,
+  "onset_mae": 0.6774410774410774,
+  "duration_mae": 0.2138047138047138,
+  "intensity_mape": 0.3226772824465019,
+  "parse_success_rate": 1.0,
+  "correct_empty_rate": 0.0,
+  "n_samples": 824
+}

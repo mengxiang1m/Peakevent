@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Conda
+.conda/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs & outputs
+*.log
+wandb/
+runs/
+output/
+results/
+
+# Dataset (大文件不纳入版本控制)
+dataset/electricity/raw/electricity.csv
+
+# Model weights & large outputs (只忽略权重和大文件，其余 json/md/txt/png 正常追踪)
+*.pth
+*.pt
+*.ckpt
+*.pkl
+*.jsonl
+*.safetensors
+
+# Root-level temp analysis scripts (not tracked)
+_*.py
+_*.png
+
+# Dataset analysis folder (tracked — important results)
+!dataset/analysis/
+!dataset/analysis/*.py
+!dataset/analysis/*.png
+!dataset/analysis/*.md
+
+# Predict output
+predict/output/
+predict/data/
+
+/papers/
+
+# Do not publish the local dataset bundle to GitHub.
+dataset/
+

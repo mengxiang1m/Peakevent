@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /d/ywz_experiment_papers/ywz_7_electric/ywz2 -maxdepth 2 -type f -name *.json -o -name *.yaml -o -name *.yml)",
+      "Bash(mkdir -p ~/.claude/skills)",
+      "Read(//home/yuwangzhi/.claude/**)",
+      "Bash(mkdir -p .claude/skills)",
+      "Bash(cp -r ~/.claude/skills/academic-research-skills .claude/skills/)"
+    ]
+  }
+}

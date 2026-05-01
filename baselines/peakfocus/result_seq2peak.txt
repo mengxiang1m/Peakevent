@@ -1,0 +1,40 @@
+seq2peak_electricity_mixed_peak_Transformer_maxIn_maxOut_MSE_244_23_168_336_0  
+mse:0.324013, mae:0.415076
+BPE:0.4609, PIM:3.4102, F1:0.4808, P:0.4957, R:0.4667, TP_MSE:0.6736, TP_MAE:0.6231, FN_MSE:0.5968, All_Peaks_MSE:0.6326 (Tol=1)
+
+seq2peak_electricity_mixed_peak_Transformer_maxIn_maxOut_MSE_244_23_168_336_1  
+mse:0.400872, mae:0.470656
+BPE:0.4606, PIM:3.3845, F1:0.5038, P:0.5194, R:0.4891, TP_MSE:0.7390, TP_MAE:0.6525, FN_MSE:0.5975, All_Peaks_MSE:0.6667 (Tol=1)
+
+seq2peak_electricity_mixed_peak_Transformer_maxIn_maxOut_MSE_244_23_168_336_2  
+mse:0.348772, mae:0.431886
+BPE:0.4581, PIM:3.3764, F1:0.4827, P:0.4976, R:0.4686, TP_MSE:0.6635, TP_MAE:0.6070, FN_MSE:0.5666, All_Peaks_MSE:0.6120 (Tol=1)
+
+seq2peak_electricity_mixed_peak_Transformer_maxIn_maxOut_MSE_244_23_168_336_3  
+mse:0.350142, mae:0.439016
+BPE:0.4650, PIM:3.4642, F1:0.4754, P:0.4902, R:0.4616, TP_MSE:0.6817, TP_MAE:0.6277, FN_MSE:0.5911, All_Peaks_MSE:0.6329 (Tol=1)
+
+seq2peak_electricity_mixed_peak_Transformer_maxIn_maxOut_MSE_244_23_168_336_4  
+mse:0.383617, mae:0.449854
+BPE:0.4801, PIM:3.6449, F1:0.4804, P:0.4952, R:0.4663, TP_MSE:0.7873, TP_MAE:0.6690, FN_MSE:0.6979, All_Peaks_MSE:0.7396 (Tol=1)
+
+seq2peak_electricity_mixed_peak_Transformer_maxIn_maxOut_MSE_244_23_168_720_0  
+mse:0.374383, mae:0.455310
+BPE:0.4563, PIM:3.3464, F1:0.4911, P:0.5070, R:0.4762, TP_MSE:0.6770, TP_MAE:0.6262, FN_MSE:0.5094, All_Peaks_MSE:0.5892 (Tol=1)
+
+seq2peak_electricity_mixed_peak_Transformer_maxIn_maxOut_MSE_244_23_168_720_1  
+mse:0.397201, mae:0.462101
+BPE:0.4602, PIM:3.3709, F1:0.5241, P:0.5410, R:0.5082, TP_MSE:0.8004, TP_MAE:0.6719, FN_MSE:0.5185, All_Peaks_MSE:0.6618 (Tol=1)
+
+seq2peak_electricity_mixed_peak_Transformer_maxIn_maxOut_MSE_244_23_168_720_2  
+mse:0.375840, mae:0.453103
+BPE:0.4690, PIM:3.4976, F1:0.4889, P:0.5047, R:0.4741, TP_MSE:0.7450, TP_MAE:0.6500, FN_MSE:0.5689, All_Peaks_MSE:0.6524 (Tol=1)
+
+seq2peak_electricity_mixed_peak_Transformer_maxIn_maxOut_MSE_244_23_168_720_3  
+mse:0.451151, mae:0.495874
+BPE:0.4658, PIM:3.4425, F1:0.5439, P:0.5615, R:0.5274, TP_MSE:0.9069, TP_MAE:0.7212, FN_MSE:0.5782, All_Peaks_MSE:0.7516 (Tol=1)
+
+seq2peak_electricity_mixed_peak_Transformer_maxIn_maxOut_MSE_244_23_168_720_4  
+mse:0.415157, mae:0.474189
+BPE:0.4628, PIM:3.4022, F1:0.5306, P:0.5477, R:0.5145, TP_MSE:0.8391, TP_MAE:0.6872, FN_MSE:0.5402, All_Peaks_MSE:0.6940 (Tol=1)
+

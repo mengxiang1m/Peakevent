@@ -1,0 +1,53 @@
+{
+  "version": "v1",
+  "source_file": "D:\\ywz_experiment_papers\\ywz_7_electric\\ywz2\\sensitivity_test\\lookahead_5\\hf_load_data_20210101-20251127_mixed_with_peaks_lookahead_5.csv",
+  "output_dir": "D:\\ywz_experiment_papers\\ywz_7_electric\\ywz2\\sensitivity_test\\lookahead_5\\wlel_event_v1",
+  "schema": {
+    "point_level_required": [
+      "timestamp",
+      "value",
+      "is_peak",
+      "event_id",
+      "d_to_apex"
+    ],
+    "event_level_required": [
+      "event_id",
+      "onset_idx",
+      "end_idx",
+      "duration",
+      "apex_idx",
+      "apex_intensity",
+      "onset_time",
+      "apex_time",
+      "event_source"
+    ],
+    "split_required": [
+      "train_ids",
+      "val_ids",
+      "test_ids"
+    ]
+  },
+  "config": {
+    "version": "v1",
+    "train_ratio": 0.7,
+    "val_ratio": 0.1,
+    "test_ratio": 0.2,
+    "history_days": 30,
+    "min_history_days": 7,
+    "enter_quantile": 0.95,
+    "exit_quantile": 0.9,
+    "merge_gap": 1,
+    "min_duration": 3,
+    "outlier_z_threshold": 3.5,
+    "event_mode": "gradient_width",
+    "max_flank_hours": 168,
+    "anchor_fallback_window_hours": 6,
+    "max_half_hours": 3,
+    "min_half_hours": 1,
+    "rate_frac": 0.02,
+    "warmup_hours": -1,
+    "patch_len": 8,
+    "patch_stride": 4
+  },
+  "generated_at": "2026-04-03T20:41:25"
+}

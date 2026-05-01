@@ -1,0 +1,120 @@
+{
+  "version": "comparison_v1",
+  "seq_len_default": 96,
+  "window_stride_default": 4,
+  "pred_lens_default": [
+    96,
+    168,
+    336
+  ],
+  "datasets": {
+    "wlel": {
+      "csv": "data/wlel.csv",
+      "events_jsonl": "..\\dataset\\wlel\\event_v1\\data\\wlel_events_v1.jsonl",
+      "source_series_csv": "..\\dataset\\wlel\\event_v1\\data\\wlel_event_series_v1.csv",
+      "source_split_json": "..\\dataset\\wlel\\event_v1\\data\\split_indices_v1.json",
+      "target": "OT",
+      "date_col": "date",
+      "length": 43001,
+      "splits": {
+        "train": {
+          "start": 0,
+          "end": 30099,
+          "count": 30100
+        },
+        "val": {
+          "start": 30100,
+          "end": 34399,
+          "count": 4300
+        },
+        "test": {
+          "start": 34400,
+          "end": 43000,
+          "count": 8601
+        }
+      },
+      "window_counts": {
+        "pred_96": 2103,
+        "pred_168": 2085,
+        "pred_336": 2043
+      },
+      "event_meta": {
+        "min_duration": 3,
+        "max_flank_hours": 6,
+        "tolerance": 3
+      }
+    },
+    "ett": {
+      "csv": "data/ett.csv",
+      "events_jsonl": "..\\dataset\\ett\\event_v1\\data\\ett_events_v1.jsonl",
+      "source_series_csv": "..\\dataset\\ett\\event_v1\\data\\ett_event_series_v1.csv",
+      "source_split_json": "..\\dataset\\ett\\event_v1\\data\\split_indices_v1.json",
+      "target": "OT",
+      "date_col": "date",
+      "length": 17420,
+      "splits": {
+        "train": {
+          "start": 0,
+          "end": 12193,
+          "count": 12194
+        },
+        "val": {
+          "start": 12194,
+          "end": 13934,
+          "count": 1741
+        },
+        "test": {
+          "start": 13935,
+          "end": 17419,
+          "count": 3485
+        }
+      },
+      "window_counts": {
+        "pred_96": 824,
+        "pred_168": 806,
+        "pred_336": 764
+      },
+      "event_meta": {
+        "min_duration": 3,
+        "max_flank_hours": 6,
+        "tolerance": 3
+      }
+    },
+    "elc": {
+      "csv": "data/elc.csv",
+      "events_jsonl": "..\\dataset\\electricity\\event_v1\\data\\elc_events_v1.jsonl",
+      "source_series_csv": "..\\dataset\\electricity\\event_v1\\data\\elc_event_series_v1.csv",
+      "source_split_json": "..\\dataset\\electricity\\event_v1\\data\\split_indices_v1.json",
+      "target": "OT",
+      "date_col": "date",
+      "length": 26304,
+      "splits": {
+        "train": {
+          "start": 0,
+          "end": 18411,
+          "count": 18412
+        },
+        "val": {
+          "start": 18412,
+          "end": 21042,
+          "count": 2631
+        },
+        "test": {
+          "start": 21043,
+          "end": 26303,
+          "count": 5261
+        }
+      },
+      "window_counts": {
+        "pred_96": 1268,
+        "pred_168": 1250,
+        "pred_336": 1208
+      },
+      "event_meta": {
+        "min_duration": 3,
+        "max_flank_hours": 6,
+        "tolerance": 3
+      }
+    }
+  }
+}

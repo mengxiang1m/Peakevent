@@ -1,0 +1,96 @@
+{
+  "arch": [
+    {
+      "name": "nlayers2",
+      "test_event_f1": 0.8491556213415864,
+      "test_onset_mae": 0.7579431106885349,
+      "test_apex_mae": 0.7287061247127803
+    },
+    {
+      "name": "nlayers3",
+      "test_event_f1": 0.8567297669883325,
+      "test_onset_mae": 0.734850863422292,
+      "test_apex_mae": 0.7017268445839875
+    },
+    {
+      "name": "nlayers4",
+      "test_event_f1": 0.8512827409972764,
+      "test_onset_mae": 0.7293625088869579,
+      "test_apex_mae": 0.7044790267793665
+    },
+    {
+      "name": "dmodel64",
+      "test_event_f1": 0.8444206008583691,
+      "test_onset_mae": 0.7395171537484116,
+      "test_apex_mae": 0.7181543837357052
+    },
+    {
+      "name": "dmodel256",
+      "test_event_f1": 0.8436892553120183,
+      "test_onset_mae": 0.7662667831890045,
+      "test_apex_mae": 0.7495034559466116
+    },
+    {
+      "name": "dff128",
+      "test_event_f1": 0.8513838748495788,
+      "test_onset_mae": 0.7376521397722812,
+      "test_apex_mae": 0.7138594424813506
+    },
+    {
+      "name": "dff512",
+      "test_event_f1": 0.8410180247080268,
+      "test_onset_mae": 0.7428158612939476,
+      "test_apex_mae": 0.7268421897575855
+    }
+  ],
+  "train": [
+    {
+      "name": "lr1e-4",
+      "test_event_f1": 0.8407271740605075,
+      "test_onset_mae": 0.7790866548329837,
+      "test_apex_mae": 0.7507664999193158
+    },
+    {
+      "name": "lr3e-4",
+      "test_event_f1": 0.8511082665229401,
+      "test_onset_mae": 0.7307052956542389,
+      "test_apex_mae": 0.7056122852845722
+    },
+    {
+      "name": "lr1e-3",
+      "test_event_f1": 0.8505450470336537,
+      "test_onset_mae": 0.7946179030583725,
+      "test_apex_mae": 0.7601213766669328
+    },
+    {
+      "name": "drop01",
+      "test_event_f1": 0.8506836334100447,
+      "test_onset_mae": 0.732733927434755,
+      "test_apex_mae": 0.6966104392106939
+    },
+    {
+      "name": "drop03",
+      "test_event_f1": 0.8559122417390134,
+      "test_onset_mae": 0.7608900770561409,
+      "test_apex_mae": 0.7476804529013996
+    },
+    {
+      "name": "ls0",
+      "test_event_f1": 0.8502133091470994,
+      "test_onset_mae": 0.7952587909917029,
+      "test_apex_mae": 0.7618332674832082
+    },
+    {
+      "name": "ls005",
+      "test_event_f1": 0.8518206054061351,
+      "test_onset_mae": 0.7613501307344901,
+      "test_apex_mae": 0.7330639410506299
+    },
+    {
+      "name": "ls02",
+      "test_event_f1": 0.85387088132869,
+      "test_onset_mae": 0.7594509803921569,
+      "test_apex_mae": 0.7309019607843137
+    }
+  ]
+}

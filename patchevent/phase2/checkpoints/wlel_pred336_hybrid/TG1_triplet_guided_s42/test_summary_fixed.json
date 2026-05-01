@@ -1,0 +1,10 @@
+{
+  "test_event_f1": 0.8234498217837779,
+  "test_event_precision": 0.7931376553655832,
+  "test_event_recall": 0.8561709990341411,
+  "test_apex_mae": 0.7306013341181087,
+  "test_onset_mae": 0.7591475377673141,
+  "test_duration_mae": 0.45384539925446343,
+  "test_intensity_mape": 0.13225645741788317,
+  "test_parse_success_rate": 1.0
+}
