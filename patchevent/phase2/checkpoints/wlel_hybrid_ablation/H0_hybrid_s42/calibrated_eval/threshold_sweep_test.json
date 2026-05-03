@@ -1,0 +1,43 @@
+{
+  "checkpoint_dir": "patchevent/phase2/checkpoints/wlel_hybrid_ablation/H0_hybrid_s42",
+  "checkpoint_path": "patchevent/phase2/checkpoints/wlel_hybrid_ablation/H0_hybrid_s42/best.pth",
+  "split": "test",
+  "selected_from_val": {
+    "exist_threshold": 0.9,
+    "hybrid_nms_onset_radius": 0,
+    "val_metrics": {
+      "event_precision": 0.8334765423612305,
+      "event_recall": 0.7549813200498132,
+      "event_f1": 0.7922894715347546,
+      "total_tp": 4850,
+      "total_fp": 969,
+      "total_fn": 1574,
+      "total_pred_events": 5819,
+      "total_gt_events": 6424,
+      "apex_mae": 1.1835051546391753,
+      "onset_mae": 1.321237113402062,
+      "duration_mae": 0.28515463917525774,
+      "intensity_mape": 0.06438372916072474,
+      "parse_success_rate": 1.0,
+      "correct_empty_rate": 0.0,
+      "n_samples": 1028
+    }
+  },
+  "metrics": {
+    "event_precision": 0.8828607576095855,
+    "event_recall": 0.8420641680863146,
+    "event_f1": 0.8619800181653043,
+    "total_tp": 11863,
+    "total_fp": 1574,
+    "total_fn": 2225,
+    "total_pred_events": 13437,
+    "total_gt_events": 14088,
+    "apex_mae": 1.162100649076962,
+    "onset_mae": 1.2969737840343927,
+    "duration_mae": 0.41835960549608026,
+    "intensity_mape": 0.06275275605650724,
+    "parse_success_rate": 1.0,
+    "correct_empty_rate": 0.0,
+    "n_samples": 2103
+  }
+}
