@@ -1,0 +1,121 @@
+{
+  "checkpoint_dir": "patchevent/phase2/checkpoints/wlel_hybrid_v21_smoke/H0_v21_hybrid_s42",
+  "checkpoint_path": "patchevent/phase2/checkpoints/wlel_hybrid_v21_smoke/H0_v21_hybrid_s42/best.pth",
+  "split": "val",
+  "thresholds": [
+    0.3,
+    0.5
+  ],
+  "nms_radii": [
+    0,
+    2
+  ],
+  "selection_rule": "max event_f1, then min onset_mae, then max precision",
+  "best_selection": {
+    "exist_threshold": 0.5,
+    "hybrid_nms_onset_radius": 2,
+    "metrics": {
+      "event_precision": 0.537565445026178,
+      "event_recall": 0.6393212951432129,
+      "event_f1": 0.5840443686006827,
+      "total_tp": 4107,
+      "total_fp": 3533,
+      "total_fn": 2317,
+      "total_pred_events": 7640,
+      "total_gt_events": 6424,
+      "apex_mae": 1.6016557097638178,
+      "onset_mae": 1.5773070367664963,
+      "duration_mae": 0.38130021913805695,
+      "intensity_mape": 0.07676130618535038,
+      "parse_success_rate": 1.0,
+      "correct_empty_rate": 0.0,
+      "n_samples": 1028
+    }
+  },
+  "candidates": [
+    {
+      "exist_threshold": 0.3,
+      "hybrid_nms_onset_radius": 0,
+      "metrics": {
+        "event_precision": 0.5360219263899765,
+        "event_recall": 0.6393212951432129,
+        "event_f1": 0.5831321879880733,
+        "total_tp": 4107,
+        "total_fp": 3555,
+        "total_fn": 2317,
+        "total_pred_events": 7662,
+        "total_gt_events": 6424,
+        "apex_mae": 1.6016557097638178,
+        "onset_mae": 1.5775505234964695,
+        "duration_mae": 0.3815437058680302,
+        "intensity_mape": 0.07677816032251839,
+        "parse_success_rate": 1.0,
+        "correct_empty_rate": 0.0,
+        "n_samples": 1028
+      }
+    },
+    {
+      "exist_threshold": 0.3,
+      "hybrid_nms_onset_radius": 2,
+      "metrics": {
+        "event_precision": 0.5361618798955614,
+        "event_recall": 0.6393212951432129,
+        "event_f1": 0.5832149957398466,
+        "total_tp": 4107,
+        "total_fp": 3553,
+        "total_fn": 2317,
+        "total_pred_events": 7660,
+        "total_gt_events": 6424,
+        "apex_mae": 1.6011687363038714,
+        "onset_mae": 1.577063550036523,
+        "duration_mae": 0.3815437058680302,
+        "intensity_mape": 0.07677423311719622,
+        "parse_success_rate": 1.0,
+        "correct_empty_rate": 0.0,
+        "n_samples": 1028
+      }
+    },
+    {
+      "exist_threshold": 0.5,
+      "hybrid_nms_onset_radius": 0,
+      "metrics": {
+        "event_precision": 0.5374247579167757,
+        "event_recall": 0.6393212951432129,
+        "event_f1": 0.5839613251812882,
+        "total_tp": 4107,
+        "total_fp": 3535,
+        "total_fn": 2317,
+        "total_pred_events": 7642,
+        "total_gt_events": 6424,
+        "apex_mae": 1.6021426832237644,
+        "onset_mae": 1.5777940102264427,
+        "duration_mae": 0.38130021913805695,
+        "intensity_mape": 0.07676523339067252,
+        "parse_success_rate": 1.0,
+        "correct_empty_rate": 0.0,
+        "n_samples": 1028
+      }
+    },
+    {
+      "exist_threshold": 0.5,
+      "hybrid_nms_onset_radius": 2,
+      "metrics": {
+        "event_precision": 0.537565445026178,
+        "event_recall": 0.6393212951432129,
+        "event_f1": 0.5840443686006827,
+        "total_tp": 4107,
+        "total_fp": 3533,
+        "total_fn": 2317,
+        "total_pred_events": 7640,
+        "total_gt_events": 6424,
+        "apex_mae": 1.6016557097638178,
+        "onset_mae": 1.5773070367664963,
+        "duration_mae": 0.38130021913805695,
+        "intensity_mape": 0.07676130618535038,
+        "parse_success_rate": 1.0,
+        "correct_empty_rate": 0.0,
+        "n_samples": 1028
+      }
+    }
+  ]
+}

@@ -1,0 +1,1178 @@
+{
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "domains": [
+    "wlel",
+    "ett",
+    "elc"
+  ],
+  "note": "Hybrid DETR-AR mainline summary. Phase-1 metrics and standalone AR ablations are excluded.",
+  "hybrid_ablation": {
+    "wlel": {
+      "H0_hybrid": {
+        "n_done": 1,
+        "per_seed": {
+          "42": {
+            "event_precision": 0.7683506954898537,
+            "event_recall": 0.9057353776263487,
+            "event_f1": 0.8314057664114677,
+            "total_tp": 12760,
+            "total_fp": 3847,
+            "total_fn": 1328,
+            "total_pred_events": 16607,
+            "total_gt_events": 14088,
+            "apex_mae": 1.2011755485893416,
+            "onset_mae": 1.3239811912225705,
+            "duration_mae": 0.41387147335423197,
+            "intensity_mape": 0.06548134805927165,
+            "parse_success_rate": 1.0,
+            "correct_empty_rate": 0.0,
+            "n_samples": 2103
+          }
+        },
+        "summary": {
+          "event_f1": {
+            "mean": 0.8314057664114677,
+            "std": 0.0
+          },
+          "onset_mae": {
+            "mean": 1.3239811912225705,
+            "std": 0.0
+          },
+          "apex_mae": {
+            "mean": 1.2011755485893416,
+            "std": 0.0
+          },
+          "duration_mae": {
+            "mean": 0.41387147335423197,
+            "std": 0.0
+          },
+          "intensity_mape": {
+            "mean": 0.06548134805927165,
+            "std": 0.0
+          }
+        }
+      },
+      "HQ8_queries": {
+        "n_done": 2,
+        "per_seed": {
+          "42": {
+            "event_precision": 0.760652383245065,
+            "event_recall": 0.8971465076660988,
+            "event_f1": 0.8232803543512246,
+            "total_tp": 12639,
+            "total_fp": 3977,
+            "total_fn": 1449,
+            "total_pred_events": 16616,
+            "total_gt_events": 14088,
+            "apex_mae": 1.2610966057441253,
+            "onset_mae": 1.4009810902761295,
+            "duration_mae": 0.4012184508268059,
+            "intensity_mape": 0.07953734042061072,
+            "parse_success_rate": 1.0,
+            "correct_empty_rate": 0.0,
+            "n_samples": 2103
+          },
+          "123": {
+            "event_precision": 0.7418102402329532,
+            "event_recall": 0.8679727427597955,
+            "event_f1": 0.799947664529635,
+            "total_tp": 12228,
+            "total_fp": 4256,
+            "total_fn": 1860,
+            "total_pred_events": 16484,
+            "total_gt_events": 14088,
+            "apex_mae": 1.3290807981681387,
+            "onset_mae": 1.4130683676807327,
+            "duration_mae": 0.44250899574746483,
+            "intensity_mape": 0.07056824335439006,
+            "parse_success_rate": 1.0,
+            "correct_empty_rate": 0.0,
+            "n_samples": 2103
+          }
+        },
+        "summary": {
+          "event_f1": {
+            "mean": 0.8116140094404298,
+            "std": 0.016498703196168373
+          },
+          "onset_mae": {
+            "mean": 1.4070247289784312,
+            "std": 0.008546995818877887
+          },
+          "apex_mae": {
+            "mean": 1.2950887019561321,
+            "std": 0.04807208347651101
+          },
+          "duration_mae": {
+            "mean": 0.4218637232871354,
+            "std": 0.02919682431228568
+          },
+          "intensity_mape": {
+            "mean": 0.07505279188750039,
+            "std": 0.006342109356645
+          }
+        }
+      },
+      "HQ12_queries": {
+        "n_done": 1,
+        "per_seed": {
+          "42": {
+            "event_precision": 0.7572383073496659,
+            "event_recall": 0.8929585462805224,
+            "event_f1": 0.8195172795674408,
+            "total_tp": 12580,
+            "total_fp": 4033,
+            "total_fn": 1508,
+            "total_pred_events": 16613,
+            "total_gt_events": 14088,
+            "apex_mae": 1.2681240063593004,
+            "onset_mae": 1.3782193958664546,
+            "duration_mae": 0.39753577106518284,
+            "intensity_mape": 0.07052253554510339,
+            "parse_success_rate": 1.0,
+            "correct_empty_rate": 0.0,
+            "n_samples": 2103
+          }
+        },
+        "summary": {
+          "event_f1": {
+            "mean": 0.8195172795674408,
+            "std": 0.0
+          },
+          "onset_mae": {
+            "mean": 1.3782193958664546,
+            "std": 0.0
+          },
+          "apex_mae": {
+            "mean": 1.2681240063593004,
+            "std": 0.0
+          },
+          "duration_mae": {
+            "mean": 0.39753577106518284,
+            "std": 0.0
+          },
+          "intensity_mape": {
+            "mean": 0.07052253554510339,
+            "std": 0.0
+          }
+        }
+      },
+      "HR0_no_refine": {
+        "n_done": 1,
+        "per_seed": {
+          "42": {
+            "event_precision": 0.7430369974464042,
+            "event_recall": 0.8881317433276548,
+            "event_f1": 0.8091311798751899,
+            "total_tp": 12512,
+            "total_fp": 4327,
+            "total_fn": 1576,
+            "total_pred_events": 16839,
+            "total_gt_events": 14088,
+            "apex_mae": 1.3519820971867007,
+            "onset_mae": 1.4359814578005115,
+            "duration_mae": 0.42047634271099743,
+            "intensity_mape": 0.07691968128923371,
+            "parse_success_rate": 1.0,
+            "correct_empty_rate": 0.0,
+            "n_samples": 2103
+          }
+        },
+        "summary": {
+          "event_f1": {
+            "mean": 0.8091311798751899,
+            "std": 0.0
+          },
+          "onset_mae": {
+            "mean": 1.4359814578005115,
+            "std": 0.0
+          },
+          "apex_mae": {
+            "mean": 1.3519820971867007,
+            "std": 0.0
+          },
+          "duration_mae": {
+            "mean": 0.42047634271099743,
+            "std": 0.0
+          },
+          "intensity_mape": {
+            "mean": 0.07691968128923371,
+            "std": 0.0
+          }
+        }
+      },
+      "HR2_refine2": {
+        "n_done": 1,
+        "per_seed": {
+          "42": {
+            "event_precision": 0.6775010304422069,
+            "event_recall": 0.8167234525837592,
+            "event_f1": 0.7406263074892987,
+            "total_tp": 11506,
+            "total_fp": 5477,
+            "total_fn": 2582,
+            "total_pred_events": 16983,
+            "total_gt_events": 14088,
+            "apex_mae": 1.4500260733530332,
+            "onset_mae": 1.5411089866156789,
+            "duration_mae": 0.4290804797496958,
+            "intensity_mape": 0.07842530610511109,
+            "parse_success_rate": 1.0,
+            "correct_empty_rate": 0.0,
+            "n_samples": 2103
+          }
+        },
+        "summary": {
+          "event_f1": {
+            "mean": 0.7406263074892987,
+            "std": 0.0
+          },
+          "onset_mae": {
+            "mean": 1.5411089866156789,
+            "std": 0.0
+          },
+          "apex_mae": {
+            "mean": 1.4500260733530332,
+            "std": 0.0
+          },
+          "duration_mae": {
+            "mean": 0.4290804797496958,
+            "std": 0.0
+          },
+          "intensity_mape": {
+            "mean": 0.07842530610511109,
+            "std": 0.0
+          }
+        }
+      },
+      "HO_query_order": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HC_no_causal_refine": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HM_no_intensity_cost": {
+        "n_done": 1,
+        "per_seed": {
+          "42": {
+            "event_precision": 0.7599879117558175,
+            "event_recall": 0.8925326519023282,
+            "event_f1": 0.820944732804492,
+            "total_tp": 12574,
+            "total_fp": 3971,
+            "total_fn": 1514,
+            "total_pred_events": 16545,
+            "total_gt_events": 14088,
+            "apex_mae": 1.1981072053443613,
+            "onset_mae": 1.2913949419436934,
+            "duration_mae": 0.4111658978845236,
+            "intensity_mape": 0.06637888272357843,
+            "parse_success_rate": 1.0,
+            "correct_empty_rate": 0.0,
+            "n_samples": 2103
+          }
+        },
+        "summary": {
+          "event_f1": {
+            "mean": 0.820944732804492,
+            "std": 0.0
+          },
+          "onset_mae": {
+            "mean": 1.2913949419436934,
+            "std": 0.0
+          },
+          "apex_mae": {
+            "mean": 1.1981072053443613,
+            "std": 0.0
+          },
+          "duration_mae": {
+            "mean": 0.4111658978845236,
+            "std": 0.0
+          },
+          "intensity_mape": {
+            "mean": 0.06637888272357843,
+            "std": 0.0
+          }
+        }
+      },
+      "HP_no_proposal_aux": {
+        "n_done": 1,
+        "per_seed": {
+          "42": {
+            "event_precision": 0.6876071154187104,
+            "event_recall": 0.8258801817149347,
+            "event_f1": 0.750427295301364,
+            "total_tp": 11635,
+            "total_fp": 5286,
+            "total_fn": 2453,
+            "total_pred_events": 16921,
+            "total_gt_events": 14088,
+            "apex_mae": 1.4505371723248819,
+            "onset_mae": 1.5091534164159863,
+            "duration_mae": 0.422518263859046,
+            "intensity_mape": 0.07423811019062827,
+            "parse_success_rate": 1.0,
+            "correct_empty_rate": 0.0,
+            "n_samples": 2103
+          }
+        },
+        "summary": {
+          "event_f1": {
+            "mean": 0.750427295301364,
+            "std": 0.0
+          },
+          "onset_mae": {
+            "mean": 1.5091534164159863,
+            "std": 0.0
+          },
+          "apex_mae": {
+            "mean": 1.4505371723248819,
+            "std": 0.0
+          },
+          "duration_mae": {
+            "mean": 0.422518263859046,
+            "std": 0.0
+          },
+          "intensity_mape": {
+            "mean": 0.07423811019062827,
+            "std": 0.0
+          }
+        }
+      },
+      "HN_noobj05": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HF_focal2": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HT_count_head": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HS_structure": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      }
+    },
+    "ett": {
+      "H0_hybrid": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HQ8_queries": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HQ12_queries": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HR0_no_refine": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HR2_refine2": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HO_query_order": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HC_no_causal_refine": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HM_no_intensity_cost": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HP_no_proposal_aux": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HN_noobj05": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HF_focal2": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HT_count_head": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HS_structure": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      }
+    },
+    "elc": {
+      "H0_hybrid": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HQ8_queries": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HQ12_queries": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HR0_no_refine": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HR2_refine2": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HO_query_order": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HC_no_causal_refine": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HM_no_intensity_cost": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HP_no_proposal_aux": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HN_noobj05": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HF_focal2": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HT_count_head": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      },
+      "HS_structure": {
+        "n_done": 0,
+        "per_seed": {},
+        "summary": {
+          "event_f1": {
+            "mean": null,
+            "std": null
+          },
+          "onset_mae": {
+            "mean": null,
+            "std": null
+          },
+          "apex_mae": {
+            "mean": null,
+            "std": null
+          },
+          "duration_mae": {
+            "mean": null,
+            "std": null
+          },
+          "intensity_mape": {
+            "mean": null,
+            "std": null
+          }
+        }
+      }
+    }
+  }
+}
