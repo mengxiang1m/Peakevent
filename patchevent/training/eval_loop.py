@@ -30,10 +30,12 @@ def validate(model, loader, device, args=None):
         x = batch['x'].to(device)
         x_future = batch['x_future'].to(device)
         target_ids = batch['target_ids'].to(device)
+        count_logits = None
 
         if is_hybrid:
             preds = model(x)
             loss = _hungarian_match_loss(preds, target_ids, model.tokenizer, device, args=args)
+            count_logits = preds.get('count_logits')
         elif is_non_ar:
             preds = model(x)
             loss = _hungarian_match_loss(preds, target_ids, model.tokenizer, device, args=args)
@@ -88,6 +90,18 @@ def validate(model, loader, device, args=None):
                 if intensity_loss is not None:
                     int_loss_w = float(getattr(args, 'intensity_loss_weight', 1.0)) if args is not None else 1.0
                     loss = loss + int_loss_w * intensity_loss
+
+        if count_logits is not None:
+            onset_lo = model.tokenizer.ONSET_OFFSET
+            onset_hi = onset_lo + model.tokenizer.N_ONSET
+            is_onset = (target_ids >= onset_lo) & (target_ids < onset_hi)
+            max_event_count = int(getattr(model, 'max_event_count', 12))
+            max_events = int(getattr(model, 'max_events', max_event_count))
+            gt_count = is_onset.sum(dim=1).clamp(max=min(max_event_count, max_events)).long()
+            count_loss_w = getattr(args, 'hybrid_count_loss_weight', None) if args is not None else None
+            if count_loss_w is None:
+                count_loss_w = getattr(args, 'count_loss_weight', 0.5) if args is not None else 0.5
+            loss = loss + float(count_loss_w) * torch.nn.functional.cross_entropy(count_logits, gt_count)
 
         total_loss += loss.item()
         n_batches += 1

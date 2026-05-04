@@ -34,6 +34,16 @@ def build_model(args) -> HybridEventDecoder | SmallPatchDecoder | NonAutoRegress
             norm_std=getattr(args, 'norm_std', 1.0),
             event_schema=getattr(args, 'event_schema', 'quad'),
             backbone_layers=getattr(args, 'backbone_layers', 2),
+            refine_order=getattr(args, 'hybrid_refine_order', 'onset'),
+            use_causal_refine_mask=not getattr(args, 'hybrid_no_causal_refine_mask', False),
+            hybrid_nms_onset_radius=getattr(args, 'hybrid_nms_onset_radius', 0),
+            use_count_head=(
+                getattr(args, 'hybrid_use_count_head', False)
+                or getattr(args, 'use_count_head', False)
+            ),
+            use_count_decoding=not getattr(args, 'hybrid_no_count_decoding', False),
+            max_event_count=getattr(args, 'max_event_count', 12),
+            time_head=getattr(args, 'hybrid_time_head', 'structured'),
         )
 
     if decoder_type == 'legacy_detr':

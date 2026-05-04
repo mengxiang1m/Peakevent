@@ -58,8 +58,9 @@ def train_one_epoch(model, loader, optimizer, scheduler, device, args, global_st
         pos_reg_preds = None
 
         if is_hybrid:
-            preds = model(x)
+            preds = model(x, target_ids=target_ids)
             loss = _hungarian_match_loss(preds, target_ids, model.tokenizer, device, args=args)
+            count_logits = preds.get('count_logits')
         elif is_non_ar:
             preds = model(x)
             loss = _hungarian_match_loss(preds, target_ids, model.tokenizer, device, args=args)
@@ -205,8 +206,12 @@ def train_one_epoch(model, loader, optimizer, scheduler, device, args, global_st
             onset_lo = model.tokenizer.ONSET_OFFSET
             onset_hi = onset_lo + model.tokenizer.N_ONSET
             is_onset = (target_ids >= onset_lo) & (target_ids < onset_hi)
-            gt_count = is_onset.sum(dim=1).clamp(max=model.max_event_count).long()
-            count_loss_w = float(getattr(args, 'count_loss_weight', 0.5))
+            max_count = min(int(model.max_event_count), int(getattr(model, 'max_events', model.max_event_count)))
+            gt_count = is_onset.sum(dim=1).clamp(max=max_count).long()
+            count_loss_w = getattr(args, 'hybrid_count_loss_weight', None)
+            if count_loss_w is None:
+                count_loss_w = getattr(args, 'count_loss_weight', 0.5)
+            count_loss_w = float(count_loss_w)
             count_loss = F.cross_entropy(count_logits, gt_count)
             loss = loss + count_loss_w * count_loss
 

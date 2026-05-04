@@ -120,7 +120,15 @@ def _hybrid_loss_on_prediction_set(
                 obj_target[q_idx] = 1.0
                 total = total + weights["onset"] * F.smooth_l1_loss(onset[b, q_idx] / scale_t, matched_gt[:, 0] / scale_t)
                 total = total + weights["apex"] * F.smooth_l1_loss(apex[b, q_idx] / scale_t, matched_gt[:, 2] / scale_t)
-                total = total + weights["duration"] * F.smooth_l1_loss((duration[b, q_idx] - 3.0) / 2.0, (matched_gt[:, 1] - 3.0) / 2.0)
+                duration_logits = preds.get(f"{prefix}duration_logits")
+                if duration_logits is not None:
+                    duration_target = (matched_gt[:, 1] - 3.0).clamp(0, 2).long()
+                    total = total + weights["duration"] * F.cross_entropy(
+                        duration_logits[b, q_idx],
+                        duration_target,
+                    )
+                else:
+                    total = total + weights["duration"] * F.smooth_l1_loss((duration[b, q_idx] - 3.0) / 2.0, (matched_gt[:, 1] - 3.0) / 2.0)
                 total = total + weights["intensity"] * F.smooth_l1_loss(intensity[b, q_idx], matched_gt[:, 3])
             matches.append((row_list, col_list))
         else:
@@ -134,6 +142,16 @@ def _hybrid_loss_on_prediction_set(
         )
 
     return total / max(B, 1), matches
+
+
+def _hybrid_structure_loss(preds: dict, prefix: str, pred_len: int) -> torch.Tensor:
+    onset = preds[f"{prefix}onset"]
+    apex = preds[f"{prefix}apex"]
+    duration = preds[f"{prefix}duration"]
+    scale_t = max(float(pred_len - 1), 1.0)
+    before_onset = F.relu(onset - apex)
+    after_event = F.relu(apex - (onset + duration - 1.0))
+    return ((before_onset + after_event) / scale_t).mean()
 
 
 def hybrid_hungarian_loss(
@@ -172,6 +190,15 @@ def hybrid_hungarian_loss(
             preds, "proposal_", target_events, device, pred_len, weights, reuse_matches=matches
         )
         total = total + proposal_weight * proposal_loss
+
+    structure_weight = float(getattr(args, "hybrid_structure_loss_weight", 0.0))
+    if structure_weight > 0:
+        structure_loss = _hybrid_structure_loss(preds, "pred_", pred_len)
+        if proposal_weight > 0 and "proposal_onset" in preds:
+            structure_loss = structure_loss + proposal_weight * _hybrid_structure_loss(
+                preds, "proposal_", pred_len
+            )
+        total = total + structure_weight * structure_loss
 
     return total
 

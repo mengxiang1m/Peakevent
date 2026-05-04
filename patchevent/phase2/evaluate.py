@@ -276,6 +276,7 @@ def evaluate_loader(
     verbose: bool = True,
     save_dir: Optional[str] = None,
     intensity_scale: float = 1.0,
+    hybrid_nms_onset_radius: int | None = None,
 ) -> dict:
     """
     对整个 DataLoader 做生成 + 匹配 + 汇总。
@@ -313,6 +314,8 @@ def evaluate_loader(
         if 'hours_future' in batch:
             gen_kwargs['hours_future'] = batch['hours_future'].to(device)
             gen_kwargs['weekdays_future'] = batch['weekdays_future'].to(device)
+        if hybrid_nms_onset_radius is not None:
+            gen_kwargs['hybrid_nms_onset_radius'] = int(hybrid_nms_onset_radius)
 
         # 生成
         gen_out = model.generate(x, max_new_tokens=max_new_tokens, return_aux=True, **gen_kwargs)

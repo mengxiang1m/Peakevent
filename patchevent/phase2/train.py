@@ -64,6 +64,16 @@ def parse_args():
                    help='Hybrid backbone Transformer层数')
     p.add_argument('--refine_layers', type=int, default=1,
                    help='Hybrid causal event refinement层数')
+    p.add_argument('--hybrid_refine_order', type=str, default='onset',
+                   choices=['onset', 'query'],
+                   help='Hybrid refine token order: onset排序或原始query顺序')
+    p.add_argument('--hybrid_no_causal_refine_mask', action='store_true',
+                   help='Hybrid消融: 禁用refine模块内部causal mask')
+    p.add_argument('--hybrid_nms_onset_radius', type=int, default=0,
+                   help='Hybrid评估后处理: 按onset半径抑制重复query (0=禁用)')
+    p.add_argument('--hybrid_time_head', type=str, default='structured',
+                   choices=['structured', 'independent'],
+                   help='Hybrid时间头: structured约束apex在onset-duration内部; independent兼容旧连续头')
 
     # E5模块开关
     p.add_argument('--unfreeze_last_n', type=int, default=0,
@@ -154,8 +164,16 @@ def parse_args():
     p.add_argument('--hybrid_object_focal_gamma', type=float, default=0.0)
     p.add_argument('--hybrid_refine_loss_weight', type=float, default=1.0)
     p.add_argument('--hybrid_proposal_loss_weight', type=float, default=0.3)
+    p.add_argument('--hybrid_structure_loss_weight', type=float, default=0.0,
+                   help='Hybrid结构约束loss: 惩罚apex落在onset-duration窗口外')
 
     # Event-Anchor / Count Head (方案A)
+    p.add_argument('--hybrid_use_count_head', action='store_true',
+                   help='Hybrid增强: 用refined query预测事件数以减少过多激活')
+    p.add_argument('--hybrid_no_count_decoding', action='store_true',
+                   help='Hybrid消融: 训练count head但推理不使用top-K事件数控制')
+    p.add_argument('--hybrid_count_loss_weight', type=float, default=None,
+                   help='Hybrid count head CE loss权重; 默认复用count_loss_weight')
     p.add_argument('--use_count_head', action='store_true',
                    help='Enable auxiliary count prediction head on encoder memory')
     p.add_argument('--max_event_count', type=int, default=12,
@@ -400,6 +418,7 @@ def main():
         verbose=True,
         save_dir=os.path.join(args.output_dir, 'test_eval'),
         intensity_scale=meta['mean'],
+        hybrid_nms_onset_radius=args.hybrid_nms_onset_radius,
     )
 
     # 保存测试摘要
