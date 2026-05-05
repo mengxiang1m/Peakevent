@@ -77,8 +77,10 @@ def _namespace_from_checkpoint(ckpt: dict, cli_args: argparse.Namespace) -> Simp
     args_dict.setdefault("backbone_layers", 2)
     args_dict.setdefault("hybrid_refine_order", "onset")
     args_dict.setdefault("hybrid_no_causal_refine_mask", False)
+    args_dict.setdefault("hybrid_use_matched_refine_order", False)
     args_dict.setdefault("hybrid_nms_onset_radius", 0)
     args_dict.setdefault("hybrid_use_count_head", False)
+    args_dict.setdefault("hybrid_use_count_decoding", False)
     args_dict.setdefault("hybrid_no_count_decoding", False)
     if "hybrid_time_head" not in args_dict:
         loc_weight = state.get("localization_head.3.weight") if isinstance(state, dict) else None

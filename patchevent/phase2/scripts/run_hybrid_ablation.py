@@ -31,7 +31,7 @@ DOMAINS = {
     },
 }
 
-OUT_BASE_TMPL = "patchevent/phase2/checkpoints/{domain}_hybrid_v21_ablation"
+OUT_BASE_TMPL = "patchevent/phase2/checkpoints/{domain}_hybrid_v22_ablation"
 
 COMMON = [
     "--decoder_type", "hybrid",
@@ -59,90 +59,95 @@ COMMON = [
 ]
 
 HYBRID_CONFIGS = {
-    # v2.1 main candidate: structured temporal head + trained count controller.
-    "H0_v21_hybrid": [
+    # v2.2 main candidate: structured temporal head, onset-ordered causal
+    # refinement, and threshold decoding. Count top-K and matched-order teacher
+    # forcing are diagnostics because WLEL v2.1 full-train collapsed with them.
+    "H0_v22_hybrid": [
         "--max_events", "10",
         "--refine_layers", "1",
         "--hybrid_time_head", "structured",
-        "--hybrid_use_count_head",
-        "--hybrid_count_loss_weight", "0.5",
     ],
 
     # Capacity / event count sensitivity.
-    "HQ8_queries": ["--max_events", "8", "--refine_layers", "1", "--hybrid_use_count_head", "--hybrid_count_loss_weight", "0.5"],
-    "HQ12_queries": ["--max_events", "12", "--refine_layers", "1", "--hybrid_use_count_head", "--hybrid_count_loss_weight", "0.5"],
+    "HQ8_queries": ["--max_events", "8", "--refine_layers", "1", "--hybrid_time_head", "structured"],
+    "HQ12_queries": ["--max_events", "12", "--refine_layers", "1", "--hybrid_time_head", "structured"],
 
-    # Count controller and temporal parameterization.
-    "HNC_no_count_head": ["--max_events", "10", "--refine_layers", "1", "--hybrid_time_head", "structured"],
-    "HCD_count_train_only": [
+    # Count controller diagnostics.
+    "HCT_count_aux_only": [
         "--max_events", "10",
         "--refine_layers", "1",
         "--hybrid_time_head", "structured",
         "--hybrid_use_count_head",
-        "--hybrid_no_count_decoding",
         "--hybrid_count_loss_weight", "0.5",
     ],
-    "HID_independent_time": [
+    "HCD_count_decode": [
         "--max_events", "10",
         "--refine_layers", "1",
-        "--hybrid_time_head", "independent",
+        "--hybrid_time_head", "structured",
         "--hybrid_use_count_head",
+        "--hybrid_use_count_decoding",
         "--hybrid_count_loss_weight", "0.5",
     ],
 
+    # Temporal parameterization diagnostics.
+    "HID_independent_time_nocount": [
+        "--max_events", "10",
+        "--refine_layers", "1",
+        "--hybrid_time_head", "independent",
+    ],
+
     # DETR proposal vs event-order refinement.
-    "HR0_no_refine": ["--max_events", "10", "--refine_layers", "0", "--hybrid_use_count_head", "--hybrid_count_loss_weight", "0.5"],
-    "HR2_refine2": ["--max_events", "10", "--refine_layers", "2", "--hybrid_use_count_head", "--hybrid_count_loss_weight", "0.5"],
+    "HR0_no_refine": ["--max_events", "10", "--refine_layers", "0", "--hybrid_time_head", "structured"],
+    "HR2_refine2": ["--max_events", "10", "--refine_layers", "2", "--hybrid_time_head", "structured"],
     "HO_query_order": [
         "--max_events", "10",
         "--refine_layers", "1",
+        "--hybrid_time_head", "structured",
         "--hybrid_refine_order", "query",
-        "--hybrid_use_count_head",
-        "--hybrid_count_loss_weight", "0.5",
+    ],
+    "HMO_matched_order": [
+        "--max_events", "10",
+        "--refine_layers", "1",
+        "--hybrid_time_head", "structured",
+        "--hybrid_use_matched_refine_order",
     ],
     "HC_no_causal_refine": [
         "--max_events", "10",
         "--refine_layers", "1",
+        "--hybrid_time_head", "structured",
         "--hybrid_no_causal_refine_mask",
-        "--hybrid_use_count_head",
-        "--hybrid_count_loss_weight", "0.5",
     ],
 
     # Loss/matching mechanics.
     "HM_no_intensity_cost": [
         "--max_events", "10",
         "--refine_layers", "1",
+        "--hybrid_time_head", "structured",
         "--hybrid_match_intensity_weight", "0.0",
-        "--hybrid_use_count_head",
-        "--hybrid_count_loss_weight", "0.5",
     ],
     "HP_no_proposal_aux": [
         "--max_events", "10",
         "--refine_layers", "1",
+        "--hybrid_time_head", "structured",
         "--hybrid_proposal_loss_weight", "0.0",
-        "--hybrid_use_count_head",
-        "--hybrid_count_loss_weight", "0.5",
     ],
     "HN_noobj05": [
         "--max_events", "10",
         "--refine_layers", "1",
+        "--hybrid_time_head", "structured",
         "--hybrid_no_object_weight", "0.5",
-        "--hybrid_use_count_head",
-        "--hybrid_count_loss_weight", "0.5",
     ],
     "HF_focal2": [
         "--max_events", "10",
         "--refine_layers", "1",
+        "--hybrid_time_head", "structured",
         "--hybrid_object_focal_gamma", "2.0",
-        "--hybrid_use_count_head",
-        "--hybrid_count_loss_weight", "0.5",
     ],
     "HS_structure": [
         "--max_events", "10",
         "--refine_layers", "1",
+        "--hybrid_time_head", "structured",
         "--hybrid_structure_loss_weight", "1.0",
-        "--hybrid_use_count_head",
-        "--hybrid_count_loss_weight", "0.5",
     ],
 }
 

@@ -34,9 +34,28 @@ CONFIGS_V21 = [
     "HNC_no_count_head",
     "HCD_count_train_only",
     "HID_independent_time",
+    "HID_independent_time_nocount",
     "HR0_no_refine",
     "HR2_refine2",
     "HO_query_order",
+    "HC_no_causal_refine",
+    "HM_no_intensity_cost",
+    "HP_no_proposal_aux",
+    "HN_noobj05",
+    "HF_focal2",
+    "HS_structure",
+]
+CONFIGS_V22 = [
+    "H0_v22_hybrid",
+    "HQ8_queries",
+    "HQ12_queries",
+    "HCT_count_aux_only",
+    "HCD_count_decode",
+    "HID_independent_time_nocount",
+    "HR0_no_refine",
+    "HR2_refine2",
+    "HO_query_order",
+    "HMO_matched_order",
     "HC_no_causal_refine",
     "HM_no_intensity_cost",
     "HP_no_proposal_aux",
@@ -55,7 +74,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--nms_radii", default=None, help="Forwarded to sweep_hybrid_thresholds.py")
     p.add_argument("--gpu", type=int, default=0)
     p.add_argument("--base_suffix", default="hybrid_ablation",
-                   choices=["hybrid_ablation", "hybrid_v21_ablation"],
+                   choices=["hybrid_ablation", "hybrid_v21_ablation", "hybrid_v22_ablation"],
                    help="Checkpoint directory suffix after domain name")
     p.add_argument("--overwrite", action="store_true")
     return p.parse_args()
@@ -75,7 +94,12 @@ def _split_int_or_default(text: str | None, default: list[int]) -> list[int]:
 
 def main() -> None:
     args = parse_args()
-    default_configs = CONFIGS_V21 if args.base_suffix == "hybrid_v21_ablation" else CONFIGS
+    if args.base_suffix == "hybrid_v22_ablation":
+        default_configs = CONFIGS_V22
+    elif args.base_suffix == "hybrid_v21_ablation":
+        default_configs = CONFIGS_V21
+    else:
+        default_configs = CONFIGS
     configs = _split_or_default(args.configs, default_configs)
     domains = _split_or_default(args.domains, DOMAINS)
     seeds = _split_int_or_default(args.seeds, SEEDS)

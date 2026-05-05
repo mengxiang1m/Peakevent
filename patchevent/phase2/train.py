@@ -12,8 +12,9 @@ import torch
 from torch.optim import AdamW
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _ROOT not in sys.path:
-    sys.path.insert(0, _ROOT)  # TODO(R-future): migrate to patchevent package import
+_REPO_ROOT = os.path.dirname(_ROOT)
+if _REPO_ROOT not in sys.path:
+    sys.path.insert(0, _REPO_ROOT)  # TODO(R-future): migrate to patchevent package import
 
 from patchevent.phase2.dataset import build_dataloaders
 from patchevent.phase2.evaluate import evaluate_loader
@@ -69,6 +70,8 @@ def parse_args():
                    help='Hybrid refine token order: onset排序或原始query顺序')
     p.add_argument('--hybrid_no_causal_refine_mask', action='store_true',
                    help='Hybrid消融: 禁用refine模块内部causal mask')
+    p.add_argument('--hybrid_use_matched_refine_order', action='store_true',
+                   help='Hybrid诊断: 训练期用Hungarian matched GT顺序组织refine; 默认关闭以避免teacher-forcing排序偏移')
     p.add_argument('--hybrid_nms_onset_radius', type=int, default=0,
                    help='Hybrid评估后处理: 按onset半径抑制重复query (0=禁用)')
     p.add_argument('--hybrid_time_head', type=str, default='structured',
@@ -170,8 +173,10 @@ def parse_args():
     # Event-Anchor / Count Head (方案A)
     p.add_argument('--hybrid_use_count_head', action='store_true',
                    help='Hybrid增强: 用refined query预测事件数以减少过多激活')
+    p.add_argument('--hybrid_use_count_decoding', action='store_true',
+                   help='Hybrid诊断: 推理时使用count head做top-K事件数控制; 默认关闭')
     p.add_argument('--hybrid_no_count_decoding', action='store_true',
-                   help='Hybrid消融: 训练count head但推理不使用top-K事件数控制')
+                   help='Legacy兼容: 禁用count top-K decoding')
     p.add_argument('--hybrid_count_loss_weight', type=float, default=None,
                    help='Hybrid count head CE loss权重; 默认复用count_loss_weight')
     p.add_argument('--use_count_head', action='store_true',

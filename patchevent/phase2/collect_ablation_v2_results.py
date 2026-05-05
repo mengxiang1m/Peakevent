@@ -38,6 +38,7 @@ HYBRID_V21_CONFIGS = [
     "HNC_no_count_head",
     "HCD_count_train_only",
     "HID_independent_time",
+    "HID_independent_time_nocount",
     "HR0_no_refine",
     "HR2_refine2",
     "HO_query_order",
@@ -49,8 +50,28 @@ HYBRID_V21_CONFIGS = [
     "HS_structure",
 ]
 
+HYBRID_V22_CONFIGS = [
+    "H0_v22_hybrid",
+    "HQ8_queries",
+    "HQ12_queries",
+    "HCT_count_aux_only",
+    "HCD_count_decode",
+    "HID_independent_time_nocount",
+    "HR0_no_refine",
+    "HR2_refine2",
+    "HO_query_order",
+    "HMO_matched_order",
+    "HC_no_causal_refine",
+    "HM_no_intensity_cost",
+    "HP_no_proposal_aux",
+    "HN_noobj05",
+    "HF_focal2",
+    "HS_structure",
+]
+
 HYBRID_BASE = "patchevent/phase2/checkpoints/{domain}_hybrid_ablation"
 HYBRID_V21_BASE = "patchevent/phase2/checkpoints/{domain}_hybrid_v21_ablation"
+HYBRID_V22_BASE = "patchevent/phase2/checkpoints/{domain}_hybrid_v22_ablation"
 OUT_JSON = "patchevent/phase2/checkpoints/hybrid_ablation_summary.json"
 OUT_MD = "patchevent/phase2/checkpoints/hybrid_ablation_summary.md"
 OUT_CAL_JSON = "patchevent/phase2/checkpoints/hybrid_calibrated_summary.json"
@@ -59,6 +80,10 @@ OUT_V21_JSON = "patchevent/phase2/checkpoints/hybrid_v21_ablation_summary.json"
 OUT_V21_MD = "patchevent/phase2/checkpoints/hybrid_v21_ablation_summary.md"
 OUT_V21_CAL_JSON = "patchevent/phase2/checkpoints/hybrid_v21_calibrated_summary.json"
 OUT_V21_CAL_MD = "patchevent/phase2/checkpoints/hybrid_v21_calibrated_summary.md"
+OUT_V22_JSON = "patchevent/phase2/checkpoints/hybrid_v22_ablation_summary.json"
+OUT_V22_MD = "patchevent/phase2/checkpoints/hybrid_v22_ablation_summary.md"
+OUT_V22_CAL_JSON = "patchevent/phase2/checkpoints/hybrid_v22_calibrated_summary.json"
+OUT_V22_CAL_MD = "patchevent/phase2/checkpoints/hybrid_v22_calibrated_summary.md"
 METRICS = ["event_f1", "onset_mae", "apex_mae", "duration_mae", "intensity_mape"]
 
 
@@ -246,6 +271,40 @@ def main():
     with open(OUT_V21_CAL_MD, "w", encoding="utf-8") as f:
         f.write("\n".join(v21_cal_lines))
     print(f"[SAVE] {OUT_V21_CAL_MD}")
+
+    hybrid_v22 = _collect_group(HYBRID_V22_BASE, HYBRID_V22_CONFIGS)
+    calibrated_v22 = _collect_calibrated_group(HYBRID_V22_BASE, HYBRID_V22_CONFIGS)
+    v22_summary = {
+        "seeds": SEEDS,
+        "domains": DOMAINS,
+        "note": "Hybrid DETR-AR v2.2 summary: structured temporal head with count top-K and matched-order teacher forcing disabled by default.",
+        "hybrid_v22_ablation": hybrid_v22,
+    }
+    with open(OUT_V22_JSON, "w", encoding="utf-8") as f:
+        json.dump(v22_summary, f, indent=2, ensure_ascii=False)
+    print(f"[SAVE] {OUT_V22_JSON}")
+
+    v22_lines = ["# Hybrid DETR-AR v2.2 Ablation Summary", ""]
+    v22_lines.extend(_render_table("Hybrid v2.2 Internal Ablation", hybrid_v22, HYBRID_V22_CONFIGS))
+    with open(OUT_V22_MD, "w", encoding="utf-8") as f:
+        f.write("\n".join(v22_lines))
+    print(f"[SAVE] {OUT_V22_MD}")
+
+    v22_cal_summary = {
+        "seeds": SEEDS,
+        "domains": DOMAINS,
+        "note": "Calibrated Hybrid DETR-AR v2.2 summary using validation-selected exist_threshold and onset NMS radius.",
+        "hybrid_v22_calibrated": calibrated_v22,
+    }
+    with open(OUT_V22_CAL_JSON, "w", encoding="utf-8") as f:
+        json.dump(v22_cal_summary, f, indent=2, ensure_ascii=False)
+    print(f"[SAVE] {OUT_V22_CAL_JSON}")
+
+    v22_cal_lines = ["# Calibrated Hybrid DETR-AR v2.2 Summary", ""]
+    v22_cal_lines.extend(_render_table("Validation-Calibrated Hybrid v2.2 Internal Ablation", calibrated_v22, HYBRID_V22_CONFIGS))
+    with open(OUT_V22_CAL_MD, "w", encoding="utf-8") as f:
+        f.write("\n".join(v22_cal_lines))
+    print(f"[SAVE] {OUT_V22_CAL_MD}")
 
 
 if __name__ == "__main__":

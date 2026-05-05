@@ -43,9 +43,10 @@ class HybridEventDecoder(nn.Module):
         backbone_layers: int = 2,
         refine_order: str = "onset",
         use_causal_refine_mask: bool = True,
+        use_matched_refine_order: bool = False,
         hybrid_nms_onset_radius: int = 0,
         use_count_head: bool = False,
-        use_count_decoding: bool = True,
+        use_count_decoding: bool = False,
         max_event_count: int = 12,
         time_head: str = "structured",
     ):
@@ -64,6 +65,7 @@ class HybridEventDecoder(nn.Module):
         self.intensity_from_values = "apex"
         self.refine_order = str(refine_order)
         self.use_causal_refine_mask = bool(use_causal_refine_mask)
+        self.use_matched_refine_order = bool(use_matched_refine_order)
         self.hybrid_nms_onset_radius = int(hybrid_nms_onset_radius)
         self.use_count_head = bool(use_count_head)
         self.use_count_decoding = bool(use_count_decoding)
@@ -137,6 +139,7 @@ class HybridEventDecoder(nn.Module):
             f"[HybridEventDecoder] trainable: {trainable:,} || total: {total:,} "
             f"|| queries: {max_events} || refine_layers: {refine_layers} "
             f"|| refine_order: {self.refine_order} || causal_refine: {self.use_causal_refine_mask} "
+            f"|| matched_order: {self.use_matched_refine_order} "
             f"|| nms_onset_radius: {self.hybrid_nms_onset_radius} "
             f"|| count_head: {self.use_count_head} || count_decode: {self.use_count_decoding} "
             f"|| time_head: {self.time_head}"
@@ -219,7 +222,12 @@ class HybridEventDecoder(nn.Module):
         return events_per_batch
 
     def _matched_refine_order(self, proposal: dict, target_ids: torch.Tensor | None) -> torch.Tensor | None:
-        if target_ids is None or not self.training or self.refine_order != "onset":
+        if (
+            target_ids is None
+            or not self.training
+            or self.refine_order != "onset"
+            or not self.use_matched_refine_order
+        ):
             return None
         target_events = self._target_events_from_ids(target_ids)
         if target_events is None:

@@ -157,3 +157,62 @@ python -u patchevent/phase2/scripts/run_hybrid_calibration.py \
   --thresholds 0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9 \
   --nms_radii 0,1,2,3
 ```
+
+## 7. Hybrid DETR-AR v2.2 diagnostic rerun
+
+Use this after the 2026-05-05 v2.1 diagnostic finding: count top-K decoding
+collapsed H0, while structured temporal heads were stronger than independent
+heads. v2.2 keeps structured temporal prediction, disables count top-K decoding
+by default, and disables matched-order teacher forcing unless explicitly tested.
+
+```bash
+python -u -m patchevent.phase2.train \
+  --decoder_type hybrid \
+  --series_path dataset/wlel/event_v1/data/wlel_event_series_v1.csv \
+  --events_path dataset/wlel/event_v1/data/wlel_events_v1.jsonl \
+  --output_dir patchevent/phase2/checkpoints/wlel_hybrid_v22_ablation/H0_v22_hybrid_s42 \
+  --seq_len 96 --pred_len 96 \
+  --patch_len 8 --patch_stride 4 \
+  --d_model 128 --n_heads 4 --n_layers 3 --d_ff 256 \
+  --dropout 0.2 \
+  --lr 5e-4 --weight_decay 0.05 \
+  --train_epochs 50 --patience 15 \
+  --batch_size 64 --eval_batch_size 128 \
+  --warmup_steps 200 --max_grad_norm 1.0 \
+  --backbone_layers 2 --refine_layers 1 \
+  --hybrid_time_head structured \
+  --max_events 10 \
+  --max_new_tokens 60 --tolerance 3 \
+  --seed 42 --gpu 0
+```
+
+If H0_v22 does not recover, run the matched-order diagnostic:
+
+```bash
+python -u -m patchevent.phase2.train \
+  --decoder_type hybrid \
+  --series_path dataset/wlel/event_v1/data/wlel_event_series_v1.csv \
+  --events_path dataset/wlel/event_v1/data/wlel_events_v1.jsonl \
+  --output_dir patchevent/phase2/checkpoints/wlel_hybrid_v22_ablation/HMO_matched_order_s42 \
+  --seq_len 96 --pred_len 96 \
+  --patch_len 8 --patch_stride 4 \
+  --d_model 128 --n_heads 4 --n_layers 3 --d_ff 256 \
+  --dropout 0.2 \
+  --lr 5e-4 --weight_decay 0.05 \
+  --train_epochs 50 --patience 15 \
+  --batch_size 64 --eval_batch_size 128 \
+  --warmup_steps 200 --max_grad_norm 1.0 \
+  --backbone_layers 2 --refine_layers 1 \
+  --hybrid_time_head structured \
+  --hybrid_use_matched_refine_order \
+  --max_events 10 \
+  --max_new_tokens 60 --tolerance 3 \
+  --seed 42 --gpu 0
+```
+
+Collect v2.2 summaries:
+
+```bash
+python patchevent/phase2/collect_ablation_v2_results.py
+cat patchevent/phase2/checkpoints/hybrid_v22_ablation_summary.md
+```

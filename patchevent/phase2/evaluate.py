@@ -35,8 +35,9 @@ import torch
 from scipy.optimize import linear_sum_assignment
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _ROOT not in sys.path:
-    sys.path.insert(0, _ROOT)  # TODO(R-future): migrate to patchevent package import
+_REPO_ROOT = os.path.dirname(_ROOT)
+if _REPO_ROOT not in sys.path:
+    sys.path.insert(0, _REPO_ROOT)  # TODO(R-future): migrate to patchevent package import
 
 from patchevent.phase2.data_utils import parse_event_json, fill_event_intensity_from_values
 
